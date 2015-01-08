@@ -14,7 +14,7 @@ class S3DirectWidget(widgets.TextInput):
         '  <a class="file-remove" href="#remove">Remove</a>'
         '  <input class="file-url" type="hidden" value="{file_url}" id="{element_id}" name="{name}" />'
         '  <input class="file-dest" type="hidden" value="{dest}">'
-        '  <input class="file-type" type="hidden" value="{type}">'
+        '  <input class="file-type" type="hidden" value="{file_type}">'
         '  <input class="file-input" type="file" />'
         '  <div class="progress progress-striped active">'
         '    <div class="bar"></div>'
