@@ -114,11 +114,12 @@
         var el       = e.target.parentElement,
             file     = el.querySelector('.file-input').files[0],
             dest     = el.querySelector('.file-dest').value,
+            type     = el.querySelector('.file-type').value,
             url      = el.getAttribute('data-policy-url'),
             form     = new FormData(),
             headers  = {'X-CSRFToken': getCookie('csrftoken')};
 
-        form.append('type', file.type);
+        form.append('type', (!type || /^\s*$/.test(type)) ? file.type : type);
         form.append('name', file.name);
         form.append('dest', dest);
 

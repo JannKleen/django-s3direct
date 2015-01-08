@@ -14,6 +14,7 @@ class S3DirectWidget(widgets.TextInput):
         '  <a class="file-remove" href="#remove">Remove</a>'
         '  <input class="file-url" type="hidden" value="{file_url}" id="{element_id}" name="{name}" />'
         '  <input class="file-dest" type="hidden" value="{dest}">'
+        '  <input class="file-type" type="hidden" value="{type}">'
         '  <input class="file-input" type="file" />'
         '  <div class="progress progress-striped active">'
         '    <div class="bar"></div>'
@@ -34,6 +35,7 @@ class S3DirectWidget(widgets.TextInput):
 
     def __init__(self, *args, **kwargs):
         self.dest = kwargs.pop('dest', None)
+        self.file_type = kwargs.pop('file_type', None)
         super(S3DirectWidget, self).__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None):
@@ -43,6 +45,8 @@ class S3DirectWidget(widgets.TextInput):
             file_name=os.path.basename(value or ''),
             dest=self.dest,
             file_url=value or '',
-            name=name)
+            name=name,
+            file_type=self.file_type or '',
+        )
 
         return mark_safe(output)
